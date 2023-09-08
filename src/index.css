@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
+
+.wrapper {
+  width: 400px;
+  height: 650px;
+  background-color: rgb(237, 227, 245);
+  border-radius: 15px;
+  box-shadow: -1px -1px 15px 0.5px rgb(99, 82, 116);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.screen {
+  width: 380px;
+  height: 100px;
+  margin-top: 80px;
+  color: #fff;
+  border-bottom: 1px solid rgb(220, 213, 230);
+}
+
+.button-box {
+  width: 360px;
+  height: 450px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1px;
+  justify-items: center;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: rgb(233, 217, 245);
+  border-radius: 50%;
+  border-style: none;
+  color: rgb(84, 38, 117);
+  font-size: 2.5rem;
+  font-family: inherit;
+}
+
+.equal-button {
+  background-color: rgb(187, 113, 162);
+  color: #fff;
+  grid-column: 3/5;
+  width: 160px;
+  height: 80px;
+  border-radius: 50px;
+  font-size: 5rem;
+  padding-bottom: 15px;
+}
+.math-symbols-button {
+  font-size: 3rem;
+  color: rgb(107, 37, 84);
+}
+
+.special-button {
+  font-size: 3.7rem;
+  color: rgb(107, 37, 84);
+}
+
+.clear-button {
+  color: rgb(204, 58, 82);
+}
