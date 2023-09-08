@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import "../index.css";
+import { CalcContext } from "../Context/CalcContext";
 
-function Screen({ screenChar }) {
+function Screen() {
+  const { calc } = useContext(CalcContext);
   return (
     <div className="screen">
-      <p>{screenChar}</p>
+      <p>{calc.number ? calc.number : calc.res}</p>
     </div>
   );
 }
