@@ -6,8 +6,12 @@ import { Button } from "./Components/Button";
 import { CalcProvider } from "./Context/CalcContext";
 
 // TO DO:
-// - add hover for the buttons
-// - max 15 digits allowed on screen
+// - add hover for the buttons - accordingly
+// - max 14 digits allowed on screen
+
+const division = "\u00F7";
+const multiplication = "\xd7";
+const subtraction = "\u2212";
 
 const buttonChar = [
   ["C", "+-", "%", "\u00F7"],

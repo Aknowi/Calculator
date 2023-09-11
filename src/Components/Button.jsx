@@ -16,17 +16,10 @@ const getStyle = (button) => {
   return className[button];
 };
 
-// const buttonChar = [
-//   ["C", "+-", "%", "\u00F7"],
-//   [7, 8, 9, "\xd7"],
-//   [4, 5, 6, "\u2212"],
-//   [1, 2, 3, "+"],
-//   [0, ",", "="],
-// ];
-
 export function Button({ value }) {
   const { calc, setCalc } = useContext(CalcContext);
   console.log(calc);
+
   // User click comma
   const commaClick = () => {
     setCalc({
@@ -44,18 +37,25 @@ export function Button({ value }) {
       res: 0,
     });
   };
+
   // User click number
   const handleDigitsOnClick = () => {
+    let result = calc.res;
+
+    if (calc.res !== 0 && calc.sign === "") {
+      console.log(calc.res);
+      result = 0;
+    }
+
     const numberString = value.toString();
-    console.log(Number(0 + "8"));
     let numberValue;
     if (numberString === "0" && calc.number === 0) {
-      numberValue = "0";
+      numberValue = 0;
     } else {
       numberValue = Number(calc.number + numberString);
     }
 
-    setCalc({ ...calc, number: numberValue });
+    setCalc({ ...calc, number: numberValue, res: result });
   };
 
   // User click sign
@@ -69,8 +69,12 @@ export function Button({ value }) {
 
   //  User click equal
   const equalsClick = () => {
-    if (calc.res && calc.number) {
+    if (typeof calc.res !== "undefined" && typeof calc.number !== "undefined") {
       const math = (a, b, sign) => {
+        //no division by 0
+        if (sign === "\u00F7" && b === 0) {
+          return 0;
+        }
         const result = {
           "+": (a, b) => a + b,
           "\u2212": (a, b) => a - b,
@@ -88,7 +92,6 @@ export function Button({ value }) {
   };
 
   // User click precent
-
   const percentClick = () => {
     setCalc({
       res: calc.res / 100,
@@ -98,12 +101,10 @@ export function Button({ value }) {
   };
 
   // User click invert button
-
   const invertClick = () => {
     setCalc({
-      res: calc.res ? -calc.res : 0,
+      ...calc,
       number: calc.number ? -calc.number : 0,
-      sign: "",
     });
   };
 
