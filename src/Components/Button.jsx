@@ -7,10 +7,10 @@ const getStyle = (button) => {
     "=": "equal-button",
     "+-": "math-symbols-button",
     "%": "math-symbols-button",
-    "\u00F7": "special-button", // "/"
-    "\xd7": "special-button", // "*"
-    "\u2212": "special-button", // "-"
-    "+": "special-button",
+    "\u00F7": "unicode-button", // "/"
+    "\xd7": "unicode-button", // "*"
+    "\u2212": "unicode-button", // "-"
+    "+": "unicode-button",
     C: "clear-button",
   };
   return className[button];
@@ -18,13 +18,12 @@ const getStyle = (button) => {
 
 export function Button({ value }) {
   const { calc, setCalc } = useContext(CalcContext);
-  console.log(calc);
 
   // User click comma
   const commaClick = () => {
     setCalc({
       ...calc,
-      number: calc.number.toString().includes(",")
+      number: calc.number.toString().includes(".")
         ? calc.number
         : calc.number + value,
     });
@@ -43,7 +42,6 @@ export function Button({ value }) {
     let result = calc.res;
 
     if (calc.res !== 0 && calc.sign === "") {
-      console.log(calc.res);
       result = 0;
     }
 
@@ -75,6 +73,7 @@ export function Button({ value }) {
         if (sign === "\u00F7" && b === 0) {
           return 0;
         }
+
         const result = {
           "+": (a, b) => a + b,
           "\u2212": (a, b) => a - b,
@@ -83,6 +82,7 @@ export function Button({ value }) {
         };
         return result[sign](a, b);
       };
+
       setCalc({
         res: math(calc.res, calc.number, calc.sign),
         sign: "",
@@ -109,7 +109,6 @@ export function Button({ value }) {
   };
 
   const handleOnClick = () => {
-    console.log(value);
     const result = {
       ".": commaClick,
       C: clearClick,
@@ -121,6 +120,7 @@ export function Button({ value }) {
       "%": percentClick,
       "+-": invertClick,
     };
+
     if (result[value]) {
       return result[value]();
     } else {

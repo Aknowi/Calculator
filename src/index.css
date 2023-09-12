@@ -1,5 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
 
+body {
+  background: rgb(0, 190, 255);
+  background: linear-gradient(
+    242deg,
+    rgba(0, 190, 255, 1) 0%,
+    rgba(237, 227, 245, 1) 38%,
+    rgba(255, 247, 208, 1) 100%
+  );
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .wrapper {
   width: 400px;
   height: 600px;
@@ -57,11 +72,6 @@
   transition: 0.5s;
 }
 
-.button:hover {
-  background-color: rgb(194, 181, 204);
-  font-size: 2em;
-}
-
 .equal-button {
   background-color: rgb(187, 113, 162);
   color: #fff;
@@ -77,11 +87,34 @@
   color: rgb(107, 37, 84);
 }
 
-.special-button {
+.unicode-button {
   font-size: 3.7rem;
   color: rgb(107, 37, 84);
 }
 
 .clear-button {
   color: rgb(204, 58, 82);
+}
+/* hover */
+.button:hover {
+  background-color: rgb(194, 181, 204);
+  font-size: 2em;
+}
+
+.equal-button:hover {
+  font-size: 4.5em;
+}
+
+.math-symbols-button:hover {
+  font-size: 2.5em;
+}
+
+.unicode-button:hover {
+  font-size: 3.2rem;
+}
+
+@media (max-width: 410px) {
+  .wrapper {
+    transform: scale(80%);
+  }
 }
