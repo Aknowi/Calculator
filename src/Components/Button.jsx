@@ -49,8 +49,10 @@ export function Button({ value }) {
     let numberValue;
     if (numberString === "0" && calc.number === 0) {
       numberValue = 0;
+    } else if (calc.number === 0 && numberString !== "0") {
+      numberValue = numberString;
     } else {
-      numberValue = Number(calc.number + numberString);
+      numberValue = calc.number + numberString;
     }
 
     setCalc({ ...calc, number: numberValue, res: result });
@@ -84,14 +86,14 @@ export function Button({ value }) {
       };
 
       setCalc({
-        res: math(calc.res, calc.number, calc.sign),
+        res: math(+calc.res, +calc.number, calc.sign),
         sign: "",
         number: 0,
       });
     }
   };
 
-  // User click precent
+  // User click percent
   const percentClick = () => {
     setCalc({
       res: calc.res / 100,
