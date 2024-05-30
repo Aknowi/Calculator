@@ -1,6 +1,6 @@
 # Calculator
 
-This project is calculator.
+This is a simple clickable calculator created for smartphones viewport.
 
 ## Technologies
 
